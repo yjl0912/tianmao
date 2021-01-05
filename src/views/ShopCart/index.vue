@@ -94,66 +94,134 @@
               </div>
             </div>
           </div>
-          <div class="order-all">
-            <div class="order-list">
-              <div class="shop-info">
-                <input type="checkbox" />
-                <div class="makepoint">
-                  <img src="" alt="" />
+          <div class="all">
+            <div class="order-all">
+              <div class="order-list">
+                <div class="shop-info">
+                  <input type="checkbox" />
+                  <div class="makepoint">
+                    <img src="" alt="" />
+                  </div>
+                  <div class="shop-name">
+                    <span class="sh-op">店铺：</span>
+                    <span class="sh-name">innisfree旗舰店</span>
+                  </div>
                 </div>
-                <div class="shop-name">
-                  <span class="sh-op">店铺：</span>
-                  <span class="sh-name">innisfree旗舰店</span>
+              </div>
+              <div class="order-content">
+                <div class="bundle-list">
+                  <div class="bundle">
+                    <div class="bundle-hd">
+                      <div class="td-chk"></div>
+                      <div class="bd-title">1月日常99包邮</div>
+                      <div class="bd-promos">满99</div>
+                    </div>
+                    <div class="bundle-main">
+                      <div class="item-list">
+                        <ul class="item-bu">
+                          <li class="bu-tn">
+                            <input type="checkbox" />
+                          </li>
+                          <li class="bu-tn1">
+                            <div class="bu-img">
+                              <img src="./images/shanfeng.jpg" alt="" />
+                              <div class="bu-details">
+                                [抢先加购]innisfree/悦诗风吟控油矿物质薄荷定妆散粉持久自然
+                              </div>
+                            </div>
+                          </li>
+                          <li class="bu-tn2">
+                            <div class="bu-colot">颜色分类:白色</div>
+                          </li>
+                          <li class="bu-tn3">
+                            <div class="bu-pice">￥158.00</div>
+                            <div class="bu-pices">￥128.00</div>
+                          </li>
+                          <li class="bu-tn4">
+                            <button class="bu-reduce">-</button>
+                            <input type="text" value="1" />
+                            <button class="plus">+</button>
+                          </li>
+                          <li class="bu-tn5">
+                            <div class="bu-picess">￥128.00</div>
+                          </li>
+                          <li class="bu-tn6">
+                            <div class="bu-a">
+                              <a href="##">移入收藏夹</a>
+                              <div>
+                                <a href="##">删除</a>
+                              </div>
+                              <a href="##">相似宝贝</a>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="order-content">
-              <div class="bundle-list">
-                <div class="bundle">
-                  <div class="bundle-hd">
-                    <div class="td-chk"></div>
-                    <div class="bd-title">1月日常99包邮</div>
-                    <div class="bd-promos">满99</div>
+            <div class="order-all">
+              <div class="order-list">
+                <div class="shop-info">
+                  <input type="checkbox" />
+                  <div class="makepoint">
+                    <img src="" alt="" />
                   </div>
-                  <div class="bundle-main">
-                    <div class="item-list">
-                      <ul class="item-bu">
-                        <li class="bu-tn">
-                          <input type="checkbox" />
-                        </li>
-                        <li class="bu-tn1">
-                          <div class="bu-img">
-                            <img src="./images/shanfeng.jpg" alt="" />
-                            <div class="bu-details">
-                              [抢先加购]innisfree/悦诗风吟控油矿物质薄荷定妆散粉持久自然
+                  <div class="shop-name">
+                    <span class="sh-op">店铺：</span>
+                    <span class="sh-name">innisfree旗舰店</span>
+                  </div>
+                </div>
+              </div>
+              <div class="order-content">
+                <div class="bundle-list">
+                  <div class="bundle">
+                    <div class="bundle-hd">
+                      <div class="td-chk"></div>
+                      <div class="bd-title">1月日常99包邮</div>
+                      <div class="bd-promos">满99</div>
+                    </div>
+                    <div class="bundle-main">
+                      <div class="item-list">
+                        <ul class="item-bu">
+                          <li class="bu-tn">
+                            <input type="checkbox" />
+                          </li>
+                          <li class="bu-tn1">
+                            <div class="bu-img">
+                              <img src="./images/shanfeng.jpg" alt="" />
+                              <div class="bu-details">
+                                [抢先加购]innisfree/悦诗风吟控油矿物质薄荷定妆散粉持久自然
+                              </div>
                             </div>
-                          </div>
-                        </li>
-                        <li class="bu-tn2">
-                          <div class="bu-colot">颜色分类:白色</div>
-                        </li>
-                        <li class="bu-tn3">
-                          <div class="bu-pice">￥158.00</div>
-                          <div class="bu-pices">￥128.00</div>
-                        </li>
-                        <li class="bu-tn4">
-                          <button class="bu-reduce">-</button>
-                          <input type="text" />
-                          <button class="plus">+</button>
-                        </li>
-                        <li class="bu-tn5">
-                          <div class="bu-picess">￥128.00</div>
-                        </li>
-                        <li class="bu-tn6">
-                          <div class="bu-a">
-                            <a href="##">移入收藏夹</a>
-                            <div>
-                              <a href="##">删除</a>
+                          </li>
+                          <li class="bu-tn2">
+                            <div class="bu-colot">颜色分类:白色</div>
+                          </li>
+                          <li class="bu-tn3">
+                            <div class="bu-pice">￥158.00</div>
+                            <div class="bu-pices">￥128.00</div>
+                          </li>
+                          <li class="bu-tn4">
+                            <button class="bu-reduce">-</button>
+                            <input type="text" value="1" />
+                            <button class="plus">+</button>
+                          </li>
+                          <li class="bu-tn5">
+                            <div class="bu-picess">￥128.00</div>
+                          </li>
+                          <li class="bu-tn6">
+                            <div class="bu-a">
+                              <a href="##">移入收藏夹</a>
+                              <div>
+                                <a href="##">删除</a>
+                              </div>
+                              <a href="##">相似宝贝</a>
                             </div>
-                            <a href="##">相似宝贝</a>
-                          </div>
-                        </li>
-                      </ul>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -213,11 +281,10 @@ export default {
           width: 140px;
           height: 36px;
         }
-        h3{
+        h3 {
           // text-align: center;
-          margin: 0 ;
+          margin: 0;
         }
-       
       }
       .search-area {
         width: 515px;
