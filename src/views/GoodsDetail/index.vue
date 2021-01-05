@@ -9,13 +9,18 @@
     </div>
     <div class="goods">
       <div class="goodsimage">
-        <div class="smallimage">
-          <img src="../../../public/image/yanyuqing.jpg" alt="" />
+        <div>
+          <div class="smallimage">
+            <img src="../../../public/image/yanyuqing.jpg" alt="" ref="event" />
+          </div>
         </div>
+
+        <div class="event" @mousemove="handleMove"></div>
+        <div class="mask" ref="mask"></div>
         <div class="bigimage">
-          <img src="../../../public/image/huanyehei.jpg" alt="" />
+          <img src="../../../public/image/yanyuqing.jpg" alt="" ref="bigImg" />
         </div>
-        <div class="mask"></div>
+
         <!-- 图片轮播 -->
         <div class="swiper-container">
           <div class="swiper-wrapper">
@@ -117,6 +122,17 @@
         </div>
       </div>
     </div>
+    <div class="buyperson">
+      <div class="buyperson-item">买主实物展示</div>
+      <div class="buyperson-img1">
+        <img src="../../../public/image/shiwu3.gif" alt="" />
+        <img src="../../../public/image/shiwu5.gif" alt="" />
+      </div>
+      <div class="buyperson-img2">
+        <img src="../../../public/image/shiwu1.gif" alt="" />
+        <img src="../../../public/image/shiwu4.gif" alt="" />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -126,6 +142,11 @@ Swiper.use(Navigation);
 
 export default {
   name: "GoodsDetail",
+  data() {
+    return {
+      isShow: false,
+    };
+  },
   methods: {
     mySwiper() {
       new Swiper(".swiper-container", {
@@ -137,6 +158,38 @@ export default {
           prevEl: ".swiper-button-prev",
         },
       });
+    },
+    handleMove() {
+      /*  开关*/
+      this.isShow = true;
+      /* event是小图大小 */
+      this.maskwidth = this.$refs.event.clientWidth / 2;
+      /*   console.log(this.maskwidth); */
+      const { offsetX, offsetY } = event;
+      /*  console.log(offsetX, offsetY); */
+      const maskwidth = this.maskwidth;
+      /* console.log(maskwidth); */
+      let left = 0;
+      let top = 0;
+      left = offsetX - maskwidth / 2;
+      top = offsetY - maskwidth / 2;
+      if (left < 20) {
+        left = 20;
+      } else if (left > maskwidth) {
+        left = maskwidth;
+      }
+      if (top < 0) {
+        top = 0;
+      } else if (top > maskwidth + 20) {
+        top = maskwidth + 20;
+      }
+      const maskDiv = this.$refs.mask;
+      maskDiv.style.left = left + "px";
+      maskDiv.style.top = top + "px";
+
+      const bigImg = this.$refs.bigImg;
+      bigImg.style.left = -2 * left + "px";
+      bigImg.style.top = -2 * top + "px";
     },
   },
   mounted() {
@@ -210,27 +263,29 @@ export default {
   width: 418px;
   height: 418px;
 }
+
 .bigimage {
   width: 418px;
   height: 418px;
   overflow: hidden;
   position: absolute;
-  left: 418px;
+  left: 458px;
   top: 0px;
   display: none;
 }
 .bigimage img {
-  width: 836px;
-  height: 836px;
+  width: 936px;
+  height: 936px;
+  position: absolute;
 }
 .mask {
-  width: 218px;
-  height: 218px;
+  width: 214px;
+  height: 214px;
   background-color: #8dd4fe;
   opacity: 0.6;
   position: absolute;
-  left: 25px;
-  top: 20px;
+  left: 0px;
+  top: 0px;
   display: none;
 }
 
@@ -408,5 +463,39 @@ export default {
   background-color: #ff0036;
   color: #fff;
   margin-left: 20px;
+}
+.buyperson-item {
+  font-size: 16px;
+  margin-left: 75px;
+  background-color: #ffeded;
+}
+.buyperson-img1,
+.buyperson-img2 {
+  display: flex;
+}
+.buyperson .buyperson-img1 img,
+.buyperson .buyperson-img2 img {
+  margin-left: 75px;
+  width: 580px;
+  height: 305px;
+}
+.buyperson-img2 {
+  margin-top: 20px;
+}
+.event:hover ~ .mask {
+  display: block;
+}
+.event:hover ~ .bigimage {
+  display: block;
+}
+.event {
+  width: 418px;
+  height: 418px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  z-index: 998;
 }
 </style>
