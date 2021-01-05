@@ -23,12 +23,24 @@
           <div class="content">
             <form action="##">
               <div class="input-text clearFix">
-                <i></i>
-                <input type="text" placeholder="手机号/会员号/邮箱" />
+                <div class="portrait">
+                  <span class="iconfont icon-user"></span>
+                </div>
+                <input
+                  type="text"
+                  placeholder="手机号/会员号/邮箱"
+                  v-model="user.phone"
+                />
               </div>
               <div class="input-text clearFix">
-                <i class="pwd"></i>
-                <input type="password" placeholder="请输入密码" />
+                <div class="portrait">
+                  <span class="iconfont icon-suo1"></span>
+                </div>
+                <input
+                  type="password"
+                  placeholder="请输入密码"
+                  v-model="user.password"
+                />
               </div>
               <button class="btn">登录</button>
               <div class="setting clearFix">
@@ -41,12 +53,35 @@
         </div>
       </div>
     </div>
+    <!-- 底部 -->
+    <div class="copyright">
+      <ul>
+        <li>关于我们</li>
+        <li>联系我们</li>
+        <li>联系客服</li>
+        <li>商家入驻</li>
+        <li>营销中心</li>
+        <li>手机尚品汇</li>
+        <li>销售联盟</li>
+        <li>尚品汇社区</li>
+      </ul>
+      <div class="address">地址：北京市昌平区宏福科技园综合楼6层</div>
+      <div class="beian">京ICP备19006430号</div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Login",
+  data() {
+    return {
+      user: {
+        phone: "",
+        password: "",
+      },
+    };
+  },
 };
 </script>
 
@@ -76,7 +111,7 @@ export default {
       background: url(./images/loginbg.jpg) no-repeat;
     }
     .loginform {
-      width: 420px;
+      width: 380px;
       height: 406px;
       box-sizing: border-box;
       background: #fff;
@@ -111,7 +146,7 @@ export default {
       }
     }
     .content {
-      width: 380px;
+      width: 350px;
       height: 316px;
       box-sizing: border-box;
       border: 1px solid #ddd;
@@ -120,18 +155,32 @@ export default {
         font-size: 12px;
         line-height: 18px;
         .input-text {
+          width: 380px;
+          display: flex;
           margin-bottom: 22px;
           position: relative;
+          .portrait {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: silver;
+            margin-left: 20px;
+            .iconfont {
+              font-size: 30px;
+              margin: 0;
+            }
+          }
+
           input {
-            width: 300px;
-            height: 32px;
+            width: 276px;
+            height: 40px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-left: none;
             float: left;
             // padding: 6px;
-            margin-left: 20px;
-            margin-bottom: 20px;
+            // margin-left: 20px;
+            // margin-bottom: 20px;
             font-size: 14px;
             line-height: 22px;
             padding-right: 8px;
@@ -165,6 +214,21 @@ export default {
       outline: none;
       margin-left: 36px;
       border-radius: 5px;
+    }
+  }
+  .copyright {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 24px;
+
+    ul {
+      li {
+        display: inline-block;
+        border-right: 1px solid #e4e4e4;
+        padding: 0 20px;
+        margin: 15px 0;
+      }
     }
   }
 }
