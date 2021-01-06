@@ -2,9 +2,7 @@
   <div class="container">
     <SideBar />
     <Header />
-    
     <Search />
-    
     <Nav />
     <a name='a'></a>
     <Carousel />
@@ -21,7 +19,6 @@
     <GuessyourLike />
     <a name='g'></a>
     <GuessyourLike />
-    
     <GuessyourLike />
     <GuessyourLike />
     <a name='a'></a>

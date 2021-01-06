@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div
+  <div >
+    <div  @click='phone'
       class="catelist"
       @mouseenter="listShow = true"
       @mouseleave="listShow = false"
@@ -55,6 +55,13 @@ export default {
       listShow: false,
     };
   },
+  methods:{
+    phone(){
+      this.$router.push({
+        path:'/GoodsDetail'
+      })
+    }
+  }
 };
 </script>
 
