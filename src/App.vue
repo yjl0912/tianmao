@@ -6,23 +6,15 @@
 </template>
 
 <script>
-// import Home from "./views/home/home";
-// import GoodsDetail from "./views/GoodsDetail";
-
 export default {
   name: "App",
-  components: {
-    // Home,
-    // GoodsDetail,
-  },
   mounted() {
     this.$router.push({
-      path: "/",
+      path: "/Home",
     });
   },
 };
 </script>
-
 <style>
 body {
   margin: 0;
