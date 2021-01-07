@@ -1,0 +1,38 @@
+[
+  {
+    "id": 16988,
+    "cartPrice": 4500,
+    "imgUrl": "http://182.92.128.115:8080/group1/M00/00/0D/rBFUDF7G99WAOrc1AAM-okB39eQ738.png",
+    "isChecked": 1,
+    "price": 1998,
+    "skuPrice": 1800,
+    "skuNum": 1,
+    "color": "红色",
+    "skuName": " IphoneXR--33",
+    "skuId": 113
+  },
+  {
+    "id": 16987,
+    "cartPrice": 5500,
+    "imgUrl": "http://182.92.128.115:8080/group1/M00/00/0F/rBFUDF7JsSCAQY55AAM4uhmZIG8446.png",
+    "isChecked": 1,
+    "price": 2998,
+    "skuPrice": 1900,
+    "skuNum": 2,
+    "color": "黑色",
+    "skuName": " 荣耀V30 Pro-22",
+    "skuId": 114
+  },
+  {
+    "id": 16985,
+    "cartPrice": 3500,
+    "imgUrl": "http://182.92.128.115:8080/group1/M00/00/0F/rBFUDF7JsSCAQY55AAM4uhmZIG8446.png",
+    "isChecked": 1,
+    "price": 1988,
+    "skuPrice": 1700,
+    "skuNum": 1,
+    "color": "蓝色",
+    "skuName": " 荣耀V50 Pro-22",
+    "skuId": 115
+  }
+]

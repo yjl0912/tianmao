@@ -1,17 +1,18 @@
 <template>
   <div>
     <!-- <ShopCart /> -->
-    <Login />
+    <!-- <Login /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from "./views/Login";
+// import Login from "./views/Login";
 // import ShopCart from "./views/ShopCart";
 export default {
   name: "App",
   components: {
-    Login,
+    // Login,
     // ShopCart,
   },
 };

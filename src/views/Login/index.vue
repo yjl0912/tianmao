@@ -14,24 +14,31 @@
         <div class="loginform">
           <ul class="tab">
             <li>
-              <a href="##" style="border-right: 0">密码登录</a>
+              <a href="##" class="current" style="border-right: 0">密码登录</a>
             </li>
             <li>
-              <a href="##" class="current">短信登录</a>
+              <a href="##">短信登录</a>
             </li>
           </ul>
           <div class="content">
-            <form action="##">
-              <div class="input-text clearFix">
-                <div class="portrait">
-                  <span class="iconfont icon-user"></span>
+            <form action="##" @submit.prevent="submit">
+              <ValidationProvider
+                rules="required|length|phone "
+                v-slot="{ errors }"
+              >
+                <div class="input-text clearFix">
+                  <div class="portrait">
+                    <span class="iconfont icon-user"></span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="手机号/会员号/邮箱"
+                    v-model="user.phone"
+                  />
                 </div>
-                <input
-                  type="text"
-                  placeholder="手机号/会员号/邮箱"
-                  v-model="user.phone"
-                />
-              </div>
+                <p :style="{ color: 'red' }">{{ errors[0] }}</p>
+              </ValidationProvider>
+
               <div class="input-text clearFix">
                 <div class="portrait">
                   <span class="iconfont icon-suo1"></span>
@@ -72,15 +79,56 @@
 </template>
 
 <script>
+import { ValidationProvider, extend } from "vee-validate";
+import { required } from "vee-validate/dist/rules";
+extend("required", { ...required, message: "手机号必须要填写" });
+extend("length", {
+  validate(value) {
+    // 验证手机号是否是11位数
+    return value.length === 11;
+  },
+  message: "必须输入11位的手机号",
+});
+extend("phone", {
+  validate(value) {
+    // 手机号正则表达式
+    return /^(13[0-9]|14[01456879]|15[0-3,5-9]|16[2567]|17[0-8]|18[0-9]|19[0-3,5-9])\d{8}$/.test(
+      value
+    );
+  },
+  message: "手机号不符合规范",
+});
 export default {
   name: "Login",
+  components: {
+    ValidationProvider,
+  },
   data() {
     return {
       user: {
         phone: "",
         password: "",
       },
+      isLongining: false, //正在登录
     };
+  },
+  // 方法
+  methods: {
+    async submit() {
+      try {
+        if (this.isLongining) return;
+        this.isLongining = true;
+        // 获取数据
+        const { phone, password } = this.user;
+        // 登录
+        await this.$store.dispatch("login", { phone, password });
+        // 跳转到首页
+        this.$router.push("/");
+      } catch (e) {
+        console.log(e);
+        this.isLongining = false;
+      }
+    },
   },
 };
 </script>
@@ -121,6 +169,7 @@ export default {
       padding: 20px;
     }
     .tab {
+      height: 50px;
       li {
         width: 50%;
         float: left;
@@ -149,9 +198,11 @@ export default {
       width: 350px;
       height: 316px;
       box-sizing: border-box;
-      border: 1px solid #ddd;
+      // border: 1px solid #ddd;
+      // margin-top: -18px;
+      margin-left: -4px;
       form {
-        margin: 15px 0 18px 0;
+        margin: 25px 0 18px 0;
         font-size: 12px;
         line-height: 18px;
         .input-text {
@@ -167,7 +218,7 @@ export default {
             margin-left: 20px;
             .iconfont {
               font-size: 30px;
-              margin: 0;
+              margin: 5px;
             }
           }
 
@@ -185,6 +236,9 @@ export default {
             line-height: 22px;
             padding-right: 8px;
             padding-left: 8px;
+            &:focus {
+              outline: medium;
+            }
           }
         }
         .setting {
@@ -212,7 +266,7 @@ export default {
       height: 36px;
       margin-top: 25px;
       outline: none;
-      margin-left: 36px;
+      margin-left: 28px;
       border-radius: 5px;
     }
   }
