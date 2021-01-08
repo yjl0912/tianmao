@@ -2,11 +2,10 @@
   <div>
     <div :class="Bar ? 'sideBarscroll' : 'sideBar'">
       <div class="sideBaritem sideBarHeader">系统导航</div>
-      <a class="sideBaritem" href="#a">天猫超市</a>
-      <a class="sideBaritem" href="#b" >天猫国际</a>
-      <a class="sideBaritem" href="#c">美丽人生</a>
+      <a class="sideBaritem" href="#a"  >物品分类</a>
+      <a class="sideBaritem" href="#b" >知名品牌</a>
       <a class="sideBaritem" href="#d">潮电酷玩</a>
-      <a class="sideBaritem" href="#e">居家生活</a>
+      <a class="sideBaritem" href="#e">美丽人生</a>
       <a class="sideBaritem" href="#f">打造爱巢</a>
       <a class="sideBaritem" href="#g">户外出行</a>
       <a class="sideBaritem" href="#h">猜你喜欢</a>
@@ -20,8 +19,9 @@
           class="input"
           placeholder="搜索 天猫 商品/品牌/店铺"
           type="text"
+          v-model="inputValue"
         />
-        <button class="button">搜索</button>
+        <button class="button" @click="toDetails">搜索</button>
       </div>
     </div>
   </div>
@@ -33,13 +33,22 @@ export default {
   data() {
     return {
       Bar: false,
+      top:0,
+      inputValue:''
     };
   },
   methods: {
+    toDetails(){
+      if(this.inputValue!=''){
+        this.$router.push({
+          path:'/GoodsDetail'
+        })
+      }
+    },
     handleScroll() {
-      let top = window.pageYOffset; //兼容不同的浏览器
+      this.top = window.pageYOffset; //兼容不同的浏览器
       //js不能连等
-      if (top < 1500) {
+      if (this.top < 1500) {
         this.Bar = false;
       } else {
         this.Bar = true;
@@ -53,6 +62,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.red{
+  background-color: #FF7811;
+}
 .sideBaritem:hover{
   background-color: greenyellow;
 }
@@ -89,6 +101,7 @@ export default {
   height: 25px;
   outline: none;
   border: 1px solid #fe0c3f;
+  font-size: 12px;
 }
 .topBar {
   display: none;

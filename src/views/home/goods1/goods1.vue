@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <span>潮电酷玩</span> <span>ELECTRONICS</span>
+  <div class="container" @click="toDetails">
+    <span class="span1">潮电酷玩</span> <span>ELECTRONICS</span>
     <div class="left">
       <img
         src=" https://img.alicdn.com/tps/i4/TB1sgSzhFcJL1JjSZFOwu3WlXXa.png"
@@ -14,32 +14,32 @@
           class="goodsimg"
           src="https://gw.alicdn.com/bao/uploaded/i1/3461000086/O1CN01UKi7km1CVQcevUMtZ_!!0-item_pic.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>男士冬季时尚休闲加绒加厚男士皮鞋</div>
+        <span>￥199</span>
       </div>
       <div class="item">
         <img
           class="goodsimg"
           src="https://gw.alicdn.com/bao/uploaded/i1/2111544756/O1CN01A5VvM21l0IGcfn0tc_!!2111544756.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>男士冬季夹棉加厚耐穿皮鞋</div>
+        <span>￥299</span>
       </div>
       <div class="item">
         <img
           class="goodsimg"
           src="https://gw.alicdn.com/bao/uploaded/i3/2099164071/O1CN01b14HzL1fwYtpTLTBK_!!0-item_pic.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>男士冬季时尚休闲鞋</div>
+        <span>￥329</span>
       </div>
       <div class="item">
         <img
           class="goodsimg"
           src="https://gw.alicdn.com/bao/uploaded/i4/1773705656/O1CN01HfyKWT1reUmq31ngW_!!0-item_pic.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>女生皮箱提拉拽唐老鸭学生款</div>
+        <span>￥159</span>
       </div>
     </div>
     <div class="buttom">
@@ -56,24 +56,24 @@
           class="goodsimg"
           src="https://gw.alicdn.com/bao/uploaded/i4/650568026/O1CN01aaEACf299xTXd3ss3_!!0-item_pic.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>冬季棉衣翻领时尚休闲夹克男纯色加绒加厚男士保暖内衣</div>
+        <span>￥66</span>
       </div>
       <div class="item">
         <img
           class="goodsimg"
           src="https://img.alicdn.com/bao/uploaded/i3/2772080898/O1CN01xuz7dm1IVKIGjFVni_!!2-item_pic.png_400x400q60.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>好吃到爆你没吃过的仙女果</div>
+        <span>￥29</span>
       </div>
       <div class="item">
         <img
           class="goodsimg"
           src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01wZbics1FOVZ8WDgUH_!!6000000000477-2-yinhe.png_400x400q60.jpg"
         />
-        <div>JEEP/吉普男士冬季棉衣翻领时尚休闲夹克男纯色加绒加厚外套男装</div>
-        <span>￥366</span>
+        <div>三只松鼠坚果休闲零食</div>
+        <span>￥36</span>
       </div>
     </div>
   </div>
@@ -81,11 +81,22 @@
 
 <script>
 export default {
-  name: "Goods",
+  name: "Goods1",
+  methods:{
+    toDetails() {
+      this.$router.push({
+           path:'/GoodsDetail'
+         })
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
+.span1{
+  font-size: 20px;
+  color: red;
+}
 .text1 {
   width: 70px;
   height: 64px;
@@ -96,7 +107,6 @@ export default {
   color: white;
   font-size: 20px;
   text-align: left;
-  
 }
 .text2 {
   width: 128px;
@@ -104,18 +114,17 @@ export default {
   position: absolute;
   top: 400px;
   left: 70px;
-  background-color: rgba(1,1,1,0.5);
+  background-color: rgba(1, 1, 1, 0.5);
   color: white;
   font-size: 20px;
   text-align: left;
-  
 }
 .left > img {
   width: 235px;
   height: 625px;
 }
-.left > img:hover{
-  filter:brightness(105%)
+.left > img:hover {
+  filter: brightness(105%);
 }
 .item > span {
   color: red;

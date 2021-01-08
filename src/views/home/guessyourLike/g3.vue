@@ -4,42 +4,42 @@
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img20.360buyimg.com/babel/s320x320_jfs/t1/54776/10/11818/406803/5d8d70ddE740043d5/24dd4b7e08b7dd2b.jpg!cc_320x320.webp"
+          src=" https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01eDT1ZV1D8okltiMuJ_!!6000000000172-2-yinhe.png_400x400q60.jpg "
         />
-        <div>琪趣 宝宝画板玩具 儿童大号磁性画板涂鸦绘画琪趣</div>
-        <span>￥69</span>
+        <div>百草味炭烧腰果100g坚果干果每日休闲</div>
+        <span>￥39.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img11.360buyimg.com/babel/s320x320_jfs/t1/145465/6/16904/114659/5fc854a4E806ca120/bb65ac6a5cf2a53f.jpg!cc_320x320.webp"
+          src=" https://img.alicdn.com/bao/uploaded/i4/725677994/O1CN01hSChdL28vImqCenSN_!!2-item_pic.png_400x400q60.jpg"
         />
-        <div> 联想(Lenovo)拯救者R7000P 15.6英寸游戏笔记本电脑</div>
-        <span>￥8299</span>
+        <div> 三只松鼠手剥巴旦木120g特产炒货扁桃仁</div>
+        <span>￥58.0</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01zFhjHZ1Ew702guP95_!!6000000000415-2-yinhe.png_400x400q60.jpg"
+          src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01DeiQOU26ryhAi7A4O_!!6000000007716-2-yinhe.png_400x400q60.jpg"
         />
-        <div>广西沙糖桔，橘子新鲜水果10斤装</div>
-        <span>￥14.5</span>
+        <div>绿光膜苹果11钢化膜iphone12手机pro全</div>
+        <span>￥16.0</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i2/196993935/O1CN01haWYBR1ewHACZOQvv_!!2-item_pic.png_400x400q60.jpg"
+          src="https://img.alicdn.com/bao/uploaded/i2/725677994/O1CN010A1B3928vImOmXWBn_!!2-item_pic.png_400x400q60.jpg "
         />
-        <div>优衣库女装长绒</div>
-        <span>￥128</span>
+        <div>正宗柳州螺蛳粉300g</div>
+        <span>￥40</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i4/1917047079/O1CN01Om8cVM22AEO0Eh02h_!!1917047079.jpg_400x400q60.jpg "
+          src=" https://img.alicdn.com/bao/uploaded/i1/2204180797163/O1CN01FWT9CZ22mha0sgW2E_!!2204180797163.jpg_400x400q60.jpg "
         />
-        <div>Apple苹果/iPhone12</div>
-        <span>￥6299</span>
+        <div>苏泊尔电热加热水龙头即热式免安装速热</div>
+        <span>￥149</span>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "GuessyourLike",
+  name: "g3",
   methods:{
     toDetails(){
       this.$router.push({

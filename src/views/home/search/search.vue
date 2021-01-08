@@ -9,8 +9,9 @@
         class="searchInput"
         type="text"
         placeholder="搜索天猫 商品/商铺/品牌"
+        v-model="inputValue"
       />
-      <button class="button">搜索</button>
+      <button class="button" @click='search'>搜索</button>
     </div>
   </div>
 </template>
@@ -18,6 +19,20 @@
 <script>
 export default {
   name: "Search",
+  data(){
+      return{
+        inputValue:''
+      }
+  },
+  methods:{
+    search(){
+       if(this.inputValue !=''){
+         this.$router.push({
+           path:'/GoodsDetail'
+         })
+       }
+    }
+  }
 };
 </script>
 
@@ -38,7 +53,7 @@ export default {
 .logo {
   width: 240px;
   height: 130px;
-  margin: 6px 25px;
+  margin: 8px 25px;
   display: inline-block;
 }
 

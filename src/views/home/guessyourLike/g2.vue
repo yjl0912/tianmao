@@ -4,42 +4,42 @@
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img20.360buyimg.com/babel/s320x320_jfs/t1/54776/10/11818/406803/5d8d70ddE740043d5/24dd4b7e08b7dd2b.jpg!cc_320x320.webp"
+          src="   https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01xT8Yyy1oY8RVmx9r6_!!6000000005236-2-yinhe.png_400x400q60.jpg "
         />
-        <div>琪趣 宝宝画板玩具 儿童大号磁性画板涂鸦绘画琪趣</div>
-        <span>￥69</span>
+        <div>维达棉立体美压花抽纸3层100抽6包</div>
+        <span>￥29.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img11.360buyimg.com/babel/s320x320_jfs/t1/145465/6/16904/114659/5fc854a4E806ca120/bb65ac6a5cf2a53f.jpg!cc_320x320.webp"
+          src=" https://img.alicdn.com/bao/uploaded/bao/upload/TB1YmPsH1L2gK0jSZPhXXahvXXa.png_400x400q60.jpg "
         />
-        <div> 联想(Lenovo)拯救者R7000P 15.6英寸游戏笔记本电脑</div>
-        <span>￥8299</span>
+        <div> 维达无心卷纸4层78克10卷中棒卫生</div>
+        <span>￥39.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01zFhjHZ1Ew702guP95_!!6000000000415-2-yinhe.png_400x400q60.jpg"
+          src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01IAWf911LPJyTRxQey_!!6000000001291-2-yinhe.png_400x400q60.jpg  "
         />
-        <div>广西沙糖桔，橘子新鲜水果10斤装</div>
-        <span>￥14.5</span>
+        <div>百草味麻辣零食大礼包</div>
+        <span>￥39.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i2/196993935/O1CN01haWYBR1ewHACZOQvv_!!2-item_pic.png_400x400q60.jpg"
+          src="https://img.alicdn.com/bao/uploaded/bao/upload/TB1_gzhHYr1gK0jSZR0XXbP8XXa.png_400x400q60.jpg  "
         />
-        <div>优衣库女装长绒</div>
-        <span>￥128</span>
+        <div>walch/韦鲁斯抑菌洗手液525ml</div>
+        <span>￥20</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i4/1917047079/O1CN01Om8cVM22AEO0Eh02h_!!1917047079.jpg_400x400q60.jpg "
+          src="  https://img.alicdn.com/bao/uploaded/i1/725677994/O1CN01bMrRrI28vIn67AZdE_!!2-item_pic.png_400x400q60.jpg "
         />
-        <div>Apple苹果/iPhone12</div>
-        <span>￥6299</span>
+        <div>三只松鼠手撕面包1kg整箱网红零食礼包</div>
+        <span>￥29.9</span>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "GuessyourLike",
+  name: "g2",
   methods:{
     toDetails(){
       this.$router.push({

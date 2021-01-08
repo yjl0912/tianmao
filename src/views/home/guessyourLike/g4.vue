@@ -4,42 +4,42 @@
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img20.360buyimg.com/babel/s320x320_jfs/t1/54776/10/11818/406803/5d8d70ddE740043d5/24dd4b7e08b7dd2b.jpg!cc_320x320.webp"
+          src="https://img.alicdn.com/bao/uploaded/i1/619123122/O1CN01gjYKUQ1Yvv5eplL8b_!!2-item_pic.png_400x400q60.jpg  "
         />
-        <div>琪趣 宝宝画板玩具 儿童大号磁性画板涂鸦绘画琪趣</div>
-        <span>￥69</span>
+        <div>良品铺子鹌鹑蛋小吃零食</div>
+        <span>￥25.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src=" https://img11.360buyimg.com/babel/s320x320_jfs/t1/145465/6/16904/114659/5fc854a4E806ca120/bb65ac6a5cf2a53f.jpg!cc_320x320.webp"
+          src="  https://img.alicdn.com/bao/uploaded/i1/2331463956/O1CN01cH2nqC1f5tRQyMfkD_!!2331463956.jpg_400x400q60.jpg "
         />
-        <div> 联想(Lenovo)拯救者R7000P 15.6英寸游戏笔记本电脑</div>
-        <span>￥8299</span>
+        <div> 奥克斯煮蛋机自动断电迷你鸡蛋机</div>
+        <span>￥29.99</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/bao/upload/O1CN01zFhjHZ1Ew702guP95_!!6000000000415-2-yinhe.png_400x400q60.jpg"
+          src=" https://img.alicdn.com/bao/uploaded/bao/upload/O1CN018I8DNz1Rnwy2LicRO_!!6000000002157-2-yinhe.png_400x400q60.jpg "
         />
-        <div>广西沙糖桔，橘子新鲜水果10斤装</div>
-        <span>￥14.5</span>
+        <div>小米充电宝移动电源10000毫安</div>
+        <span>￥79.9</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i2/196993935/O1CN01haWYBR1ewHACZOQvv_!!2-item_pic.png_400x400q60.jpg"
+          src="https://img.alicdn.com/bao/uploaded/i1/3679282456/O1CN01WcBeuk1U0tKgXTmlV_!!3679282456.jpg_400x400q60.jpg  "
         />
-        <div>优衣库女装长绒</div>
-        <span>￥128</span>
+        <div>雀巢咖啡特浓条装蓝山三合一袋</div>
+        <span>￥35</span>
       </div>
       <div class="item">
         <img
           class="guessyourlike"
-          src="https://img.alicdn.com/bao/uploaded/i4/1917047079/O1CN01Om8cVM22AEO0Eh02h_!!1917047079.jpg_400x400q60.jpg "
+          src="  https://img.alicdn.com/bao/uploaded/i2/3426460083/O1CN01RGRRSD1CU3ThPeIwb_!!0-item_pic.jpg_400x400q60.jpg "
         />
-        <div>Apple苹果/iPhone12</div>
-        <span>￥6299</span>
+        <div>美的电饭煲家用4L电饭锅迷你小型1-2人</div>
+        <span>￥169</span>
       </div>
     </div>
   </div>
@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  name: "GuessyourLike",
+  name: "g4",
   methods:{
     toDetails(){
       this.$router.push({

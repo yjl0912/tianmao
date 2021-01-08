@@ -46,7 +46,8 @@ export default {
   text-decoration-line: none;
 }
 .nav:hover{
-    color:#ff0036;
+    color:#ff0036  ;
+  
 }
 .container {
   display: flex;
@@ -56,6 +57,7 @@ export default {
   margin-left: 370px;
   background-color: 100%;
 }
+
 .img {
   width: 100px;
   height: 30px;

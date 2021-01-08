@@ -23,6 +23,7 @@
           <div>帮助中心</div>
           <div>您的购物指南</div>
         </div>
+        <img class="bottomCat" src='https://img.alicdn.com/tfs/TB1dl28RXXXXXbzaFXXXXXXXXXX-136-50.png'/>
       </div>
       <!-- dl部分 -->
       <div class="dlcontainer">
@@ -89,6 +90,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.bottomCat{
+  width: 80px;
+  height: 40px;
+  position: relative;
+  top:73px;
+  left: -950px;
+}
 .white {
   width: 100%;
   background-color: white;
