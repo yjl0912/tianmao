@@ -52,7 +52,7 @@
     <div class="text1" v-if="text2">{{ text2 }}</div>
 
 
-    <button style="color: #ff4a00;display: flex;margin-left: 20px">确认付款</button>
+    <button style="color: #ff4a00;display: flex;margin-left: 20px" @click="paysuccess">确认付款</button>
     <hr>
     <a href="" style="font-size: 8px;color: darkgray;margin-left: 420px">ICP证：沪B2-20150087</a>
     <div class="img"><img src="../../assets/imags/IASErdnJnLbiMvSoxkaQ.png" alt=""></div>
@@ -74,6 +74,11 @@
     }
   },
   methods: {
+     paysuccess(){
+        this.$router.push({
+          path:'/Paysuccess'
+        })
+     },
     yanzheng2() {
       let zhengze2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[^]{8,16}$/
       let result2 = zhengze2.test(this.inputValue2)

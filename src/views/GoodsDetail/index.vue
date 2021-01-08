@@ -101,7 +101,7 @@
           <div class="buy-save">库存70件</div>
         </div>
         <div class="footer">
-          <div class="footer-buy">立即购买</div>
+          <div class="footer-buy"  @click="toPay">立即购买</div>
           <div class="footer-shopcart">加入购物车</div>
         </div>
       </div>
@@ -133,6 +133,11 @@ export default {
     };
   },
   methods: {
+    toPay(){
+      this.$router.push({
+        path:'/paydetail'
+      })
+    },
     ...mapActions(["getProductDetail"]),
     decrease() {
       if (this.num < 1) {

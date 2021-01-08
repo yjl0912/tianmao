@@ -7,6 +7,8 @@ import PayDetail from "../views/PayDetail";
 import Registered from "../views/Registered";
 import Verify from "../views/Verify";
 import Pay from "../views/Pay";
+import Paysuccess from '../views/Paysuccess/paydetail.vue'
+
 
 // 重写push和replace方法
 // 目的：为了让编程式导航重复点击时不报错~
@@ -71,6 +73,10 @@ const router = new VueRouter({
       path: "/Pay",
       component: Pay,
     },
+    {
+      path:'/Paysuccess',
+      component:Paysuccess
+    }
   ],
 });
 export default router;

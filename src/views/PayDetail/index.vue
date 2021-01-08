@@ -102,7 +102,7 @@
       <div class="buypeice-adress">寄至M78星云</div>
       <div class="buypeice-person">收货人：史帅乐</div>
     </div>
-    <button class="btn">提交订单</button>
+    <button class="btn" @click='tomoney'>提交订单</button>
     <div class="footer">
       <div class="footer-left">
         <img src="../../../public/image/tianmao.png" alt="" />
@@ -136,6 +136,11 @@ export default {
     };
   },
   methods: {
+    tomoney(){
+      this.$router.push({
+        path:'/Pay'
+      })
+    },
     changaddress() {
       this.dialogFormVisible = true;
     },
