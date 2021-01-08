@@ -18,14 +18,14 @@
         <div class="code-3">天猫Tmall -- 美特斯邦威短袖polo衫男2020新款夏季情侣装宽松潮流半袖女士上衣<br>
           卖家昵称：美特斯邦威官方网店
         </div>
-        <div class="code-4">支付：108元</div>
+        <div class="code-4">支付：7300元</div>
       </div>
     </div>
     <div class="hua">
       <div class="hua-1">
         <div class="hua-2">花呗</div>
         <div class="hua-3">:推荐</div>
-        <div class="hua-4">支付：108元</div>
+        <div class="hua-4">支付：7300元</div>
       </div>
     </div>
     <div class="button">

@@ -102,7 +102,7 @@
         </div>
         <div class="footer">
           <div class="footer-buy"  @click="toPay">立即购买</div>
-          <div class="footer-shopcart">加入购物车</div>
+          <div class="footer-shopcart" @click='toshopcart'>加入购物车</div>
         </div>
       </div>
     </div>
@@ -133,6 +133,11 @@ export default {
     };
   },
   methods: {
+    toshopcart(){
+      this.$router.push({
+        path:'/shopcart'
+      })
+    },
     toPay(){
       this.$router.push({
         path:'/paydetail'

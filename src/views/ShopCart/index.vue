@@ -48,7 +48,7 @@
       </div> -->
       <div class="header-buttom">
         <div class="logoArea">
-          <img src="./images/logos.png" alt="" />
+          <img src="./images/logos.png" alt="" @click="tohome" />
           <h3>购物车</h3>
         </div>
         <div class="search-area">
@@ -74,16 +74,24 @@
             </li>
           </ul>
           <div class="cart-sum">
-            <span class="selected">已选商品（不包含运费）</span>
-            <span class="pice">0.00</span>
-            <span class="settlement">结算</span>
+            <span class="selected"
+              >已选商品&nbsp;&nbsp;{{ total }}&nbsp;&nbsp;件（不包含运费）</span
+            >
+            <span class="pice">￥{{ totalPrice }}</span>
+            <span
+              class="settlement"
+              style="background-color: #ea4a36"
+              @click="toPay"
+              >结算</span
+            >
           </div>
         </div>
         <div class="cart-main">
+          <!-- 商品列表头部 -->
           <div class="cart-table-th">
             <div class="wp">
               <div class="th-chk">
-                <input type="checkbox" />
+                <input type="checkbox" :checked="selectAll" />
                 <div class="select-all">全选</div>
                 <div class="td-inner">商品信息</div>
                 <div class="ko"></div>
@@ -94,11 +102,15 @@
               </div>
             </div>
           </div>
+          <!-- 商品 -->
           <div class="all">
-            <div class="order-all">
+            <div
+              class="order-all"
+              v-for="(shopCart, index) in shopCartList"
+              :key="shopCart.id"
+            >
               <div class="order-list">
                 <div class="shop-info">
-                  <input type="checkbox" />
                   <div class="makepoint">
                     <img src="" alt="" />
                   </div>
@@ -120,36 +132,57 @@
                       <div class="item-list">
                         <ul class="item-bu">
                           <li class="bu-tn">
-                            <input type="checkbox" />
+                            <input
+                              type="checkbox"
+                              :checked="shopCart.isChecked"
+                              @click="isCheck(shopCart.id)"
+                            />
                           </li>
                           <li class="bu-tn1">
                             <div class="bu-img">
-                              <img src="./images/shanfeng.jpg" alt="" />
+                              <img :src="shopCart.imgUrl" alt="" />
                               <div class="bu-details">
-                                [抢先加购]innisfree/悦诗风吟控油矿物质薄荷定妆散粉持久自然
+                                {{ shopCart.skuName }}
                               </div>
                             </div>
                           </li>
                           <li class="bu-tn2">
-                            <div class="bu-colot">颜色分类:白色</div>
+                            <div class="bu-colot">
+                              颜色分类:{{ shopCart.color }}
+                            </div>
                           </li>
                           <li class="bu-tn3">
-                            <div class="bu-pice">￥158.00</div>
-                            <div class="bu-pices">￥128.00</div>
+                            <div class="bu-pice">￥{{ shopCart.price }}</div>
+                            <div class="bu-pices">
+                              ￥{{ shopCart.skuPrice }}
+                            </div>
                           </li>
                           <li class="bu-tn4">
-                            <button class="bu-reduce">-</button>
-                            <input type="text" value="1" />
-                            <button class="plus">+</button>
+                            <button
+                              class="bu-reduce"
+                              @click="reduce(shopCart.id)"
+                            >
+                              -
+                            </button>
+                            <input
+                              type="text"
+                              :value="shopCart.skuNum"
+                              @input="formatSkuNum"
+                            />
+                            <button class="plus" @click="plus(shopCart.id)">
+                              +
+                            </button>
                           </li>
                           <li class="bu-tn5">
-                            <div class="bu-picess">￥128.00</div>
+                            <div class="bu-picess">
+                              ￥{{ shopCart.skuPrice * shopCart.skuNum }}
+                            </div>
                           </li>
                           <li class="bu-tn6">
                             <div class="bu-a">
                               <a href="##">移入收藏夹</a>
                               <div>
-                                <a href="##">删除</a>
+                                <a href="##" @click="deletecart(index)">删除</a>
                               </div>
                               <a href="##">相似宝贝</a>
                             </div>
@@ -161,7 +194,7 @@
                 </div>
               </div>
             </div>
-            <div class="order-all">
+            <!-- <div class="order-all">
               <div class="order-list">
                 <div class="shop-info">
                   <input type="checkbox" />
@@ -224,6 +257,45 @@
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+        <div class="cart-foot">
+          <div class="float-bar">
+            <div class="float-wrapper">
+              <div class="selects-all">
+                <div class="cart-checkbox">
+                  <input type="checkbox" :checked="selectAll" />
+                </div>
+                &nbsp;全选
+              </div>
+              <!-- <div class="operations">
+                <span class="delete-selected" >删除</span>
+                <span class="clear-invalid">清除失效宝贝</span>
+                <span classi="batch-fav">移入收藏夹</span>
+                <span class="batch-share">分享</span>
+              </div> -->
+              <div class="float-right">
+                <div class="amount-num">
+                  <span>已选商品</span>
+                  <span class="quantity">{{ total }}</span>
+                  <span>件</span>
+                </div>
+                <div class="price-num">
+                  <span class="total">合计（不含运费）：</span>
+                  <div class="txt-price">
+                    <span>￥{{ totalPrice }}</span>
+                  </div>
+                </div>
+                <div class="btn-area">
+                  <span
+                    class="settlement"
+                    style="background-color: #ea4a36"
+                    @click="toPay"
+                    >结&nbsp;&nbsp;算</span
+                  >
                 </div>
               </div>
             </div>
@@ -235,8 +307,125 @@
 </template>
 
 <script>
+// 引入vuex
+// import { mapActions } from "vuex";
+import { reqGetCartList } from "../../api/shopcart";
 export default {
   name: "ShopCart",
+  data() {
+    return {
+      num: 1,
+      shopCartList: [], //购物车商品数组
+    };
+  },
+  // 监视
+  watch: {},
+  // 计算属性
+  computed: {
+    // 全选
+    selectAll() {
+      return this.shopCartList.every((cart) => {
+        return cart.isChecked === 1;
+      });
+    },
+    // 商品总量
+    total() {
+      return (
+        this.shopCartList
+          // 过滤 保留isChecked为1的 已选商品 然后使用 reduce方法进行累加
+          .filter((shopCart) => shopCart.isChecked === 1)
+          .reduce((p, c) => p + c.skuNum, 0)
+      );
+    },
+    // 商品总价格
+    totalPrice() {
+      return this.shopCartList
+        .filter((shopCart) => shopCart.isChecked === 1)
+        .reduce((p, c) => p + c.skuNum * c.skuPrice, 0);
+    },
+  },
+  methods: {
+    tohome() {
+      this.$router.push({
+        path:'/'
+      })
+    },
+    toPay() {
+      this.$router.push({
+        path: "/Pay",
+      });
+    },
+    // 删除商品
+    deletecart(index) {
+      this.shopCartList.splice(index, 1);
+    },
+
+    // 减少商品数量
+    reduce(id) {
+      this.shopCartList.map((cart) => {
+        if (cart.id === id) {
+          cart.skuNum--;
+        }
+        // 判断 输入的数量不能小于1
+        if (cart.skuNum < 1) {
+          cart.skuNum = 1;
+        }
+      });
+    },
+    // 增加商品数量
+    plus(id) {
+      this.shopCartList.map((cart) => {
+        if (cart.id === id) {
+          cart.skuNum++;
+        }
+        // 判断输入的数量不能大于10
+        if (cart.skuNum > 10) {
+          cart.skuNum = 10;
+        }
+      });
+    },
+    // 勾选商品的回调
+    isCheck(id) {
+      this.shopCartList.map((cart) => {
+        if (cart.id === id) {
+          cart.isChecked = !cart.isChecked;
+        }
+        if (cart.isChecked) {
+          cart.isChecked = 1;
+        } else {
+          cart.isChecked = 0;
+        }
+      });
+    },
+    // ...mapActions(["getCartList"]),
+    // 格式化数据 手动输入数量
+    formatSkuNum(e) {
+      // console.log(e.target.value)
+      // 使用replace 方法替换掉非法数字 并重新赋值给skuNum
+      let skuNum = +e.target.value.replace(/\D+/g, " ");
+      // 判断 输入的数量不能小于1
+      if (skuNum < 1) {
+        skuNum = 1;
+        // 判断输入的数量不能大于10
+      } else if (skuNum > 10) {
+        skuNum = 10;
+      }
+      // 更新输入的值
+      e.target.value = skuNum;
+    },
+    // 结算
+    // submit(){
+    //   this.$router.push('')
+    // },
+  },
+
+  // 生命周期
+  async mounted() {
+    const result = await reqGetCartList();
+    // console.log(result);
+    this.shopCartList = result;
+    // console.log(this.shopCartList);
+  },
 };
 </script>
 
@@ -326,6 +515,10 @@ export default {
           display: flex;
           list-style: none;
           // font-size: 16px;
+
+          .spm {
+            font-weight: 700;
+          }
           .cart-shop {
             font-size: 16px;
             margin-right: 20px;
@@ -448,16 +641,19 @@ export default {
                 }
                 .bundle-main {
                   width: 988px;
-                  height: 120px;
+                  height: 135px;
                   border: 1px solid #ccc;
                   // border-top: none;
                   .item-list {
                     width: 988px;
-
+                    margin-top: -16px;
                     .item-bu {
                       display: flex;
                       padding-left: 0px;
+                      padding-top: 16px;
                       margin-left: 1px;
+                      // background-color: #f0f0f0;
+                      background-color: #fcfcfc;
                       li {
                         list-style: none;
                       }
@@ -493,6 +689,11 @@ export default {
                       .bu-tn3 {
                         width: 120px;
                         height: 119px;
+                        .bu-pice {
+                          color: #9c9c9c;
+                          text-decoration: line-through;
+                          font-family: Arial;
+                        }
                       }
                       .bu-tn4 {
                         width: 120px;
@@ -509,8 +710,10 @@ export default {
                         width: 105px;
                         height: 119px;
                         .bu-picess {
-                          font-size: 12px;
-                          color: salmon;
+                          // font-size: 16px;
+                          // color: salmon;
+                          color: #f40;
+                          font-weight: 600;
                         }
                       }
                       .bu-tn6 {
@@ -528,6 +731,107 @@ export default {
             }
           }
         }
+      }
+    }
+  }
+  // 底部 结算
+  .cart-foot {
+    // margin-top: -22px;
+    .float-bar {
+      .float-wrapper {
+        width: 990px;
+        height: 50px;
+        margin: 0 auto;
+        background: #e5e5e5;
+        overflow: hidden;
+        display: flex;
+        .selects-all {
+          display: flex;
+          // width: 50px;
+          height: 50px;
+          font-size: 12px;
+          line-height: 50px;
+          padding-left: 4px;
+          margin-right: 10px;
+          .cart-checkbox {
+            padding: 2px 4px 0 0;
+          }
+        }
+      }
+    }
+  }
+  .operations {
+    // margin-left: 20px;
+    width: 280px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: -2px;
+    span {
+      display: inline-block;
+      text-decoration: none;
+      font-size: 12px;
+      height: 50px;
+      margin-left: 26px;
+    }
+  }
+  .float-right {
+    // width: 300px;
+    display: flex;
+    margin-left: auto;
+    span {
+      display: inline-block;
+    }
+    .amount-num {
+      display: flex;
+      height: 48px;
+      line-height: 48px;
+      font-size: 12px;
+      span {
+        margin-left: 6px;
+      }
+      .quantity {
+        font-weight: 600;
+        font-size: 18px;
+        color: #f40;
+      }
+      .total {
+        // width: 108px;
+        margin: 0;
+      }
+    }
+    .price-num {
+      display: flex;
+      font-size: 12px;
+      margin-left: 50px;
+      .total {
+        height: 48px;
+        line-height: 48px;
+      }
+      .txt-price {
+        height: 50px;
+        line-height: 50px;
+        span {
+          font-weight: 700;
+          font-size: 20px;
+          padding: 0 3px;
+          color: #f40;
+        }
+      }
+    }
+    .btn-area {
+      // margin-left: 50px;
+      width: 120px;
+      height: 50px;
+      .settlement {
+        background: #b0b0b0;
+        color: #fff;
+        border-left: 1px solid #e7e7e7;
+        width: 119px;
+        cursor: not-allowed;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 20px;
       }
     }
   }

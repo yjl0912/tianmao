@@ -6,7 +6,7 @@
       </div>
       <div class="headerRight">
         <a href="#" class="item" data-id='1' @mouseenter="mouseenter" @mouseleave='mouseleave'>我的淘宝</a>
-        <a href="#" class="item">购物车</a>
+        <a href="#" class="item" @click="toshopcart">购物车</a>
         <a href="#" class="item"  data-id='2' @mouseenter="mouseenter" @mouseleave='mouseleave'>收藏夹</a>
         <a href="#" class="item" data-id='3' @mouseenter="mouseenter" @mouseleave='mouseleave'>手机版</a>
         <a href="#" class="item">淘宝版</a>
@@ -37,6 +37,11 @@ export default {
     }
   },
   methods:{
+    toshopcart(){
+      this.$router.push({
+        path:'/shopcart'
+      })
+    },
     toRegister(){
         this.$router.push({
           path:'/Registered'

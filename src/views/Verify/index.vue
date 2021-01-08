@@ -42,7 +42,7 @@
               <span class="code-btn" >获取验证码</span>
             </div>
           </div>
-          <div class="login-button">完成注册</div>
+          <div class="login-button" @click='tologin'>完成注册</div>
         </div>
       </div>
     </div>
@@ -65,6 +65,11 @@ export default {
     }
   },
   methods: {
+    tologin(){
+      this.$router.push({
+        path:'/Login'
+      })
+    },
     yanzheng1() {
       let zhengze1 = /^1[3|4|5|7|8][0-9]{9}$/
       let result = zhengze1.test(this.inputValue1)
