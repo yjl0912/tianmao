@@ -9,47 +9,52 @@
       </div>
     </div>
     <div class="address-more">
-      <div class="adress">
+      <div class="adress" v-for="(buy, index) in buylist.data" :key="buy.id">
         <div class="adress-option">选择收货地址</div>
         <div class="adress-card">
           <div class="address-person">
-            <span>火星</span>
-            <span>M78星云</span>
-            <span>（史帅乐收）</span>
+            <!-- <span>火星</span> -->
+            <span>{{ buy.address }}</span>
+            <span>（{{ buy.name }}）</span>
           </div>
           <div class="address-res">
-            <span>送不到打死</span>
-          </div>
-        </div>
-      </div>
-      <div class="adress">
-        <div class="adress-option">选择收货地址</div>
-        <div class="adress-card">
-          <div class="address-person">
-            <span>五星阳光会所</span>
-            <span>桑拿</span>
-            <span>（骚亮收）</span>
-          </div>
-          <div class="address-res">
-            <span>靓妞来送</span>
-          </div>
-        </div>
-      </div>
-      <div class="adress">
-        <div class="adress-option">选择收货地址</div>
-        <div class="adress-card">
-          <div class="address-person">
-            <span>职业干饭人</span>
-            <span>铁铁的</span>
-            <span>（怀泳收）</span>
-          </div>
-          <div class="address-res">
-            <span>靓妞来送</span>
+            <span class="left-del">{{ buy.reques }}</span>
+            <span class="del" @click="del(index)">删除</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="address-new">使用新地址</div>
+    <div class="address-new" @click="changaddress">使用新地址</div>
+    <el-dialog
+      class="address-newchange"
+      title="收货地址"
+      :visible.sync="dialogFormVisible"
+    >
+      <el-form :model="form">
+        <el-form-item label="姓名" :label-width="formLabelWidth">
+          <el-input v-model="form.name" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="地址" :label-width="formLabelWidth">
+          <el-select v-model="form.reques" placeholder="选择要求，不选不送">
+            <el-option label="送不到打死" value="送不到打死"></el-option>
+            <el-option
+              label="各领风骚数百年"
+              value="各领风骚数百年"
+            ></el-option>
+            <el-option label="来我怀里游泳" value="来我怀里游泳"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="具体地址" :label-width="formLabelWidth">
+          <el-input v-model="form.address" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false" type="warning"
+          >取 消</el-button
+        >
+        <el-button @click="upDateAddress" type="primary">确 定</el-button>
+      </div>
+    </el-dialog>
     <div class="order">确认订单信息</div>
     <div class="goods-table">
       <div class="goods-tilte1">店铺宝贝</div>
@@ -65,26 +70,15 @@
       </div>
       <div class="goods-wenzi">店铺：天猫超市</div>
     </div>
-    <div class="sale-buy">
+    <div class="sale-buy" v-for="buysale in buylist.sale" :key="buysale.id">
       <div class="sale-img">
-        <img src="../../../public/image/mitaohong.jpg" alt="" />
+        <img :src="buysale.imgUrl" alt="" />
       </div>
-      <div class="sale-attribute">商品精美，用着舒心</div>
+      <div class="sale-attribute">{{ buysale.dsc }}</div>
       <div class="sale-tast">精装手机</div>
-      <div class="sale-price">8900</div>
-      <div class="sale-count">2</div>
-      <div class="sale-sum">17800.00</div>
-    </div>
-
-    <div class="sale-buy">
-      <div class="sale-img">
-        <img src="../../../public/image/mitaohong.jpg" alt="" />
-      </div>
-      <div class="sale-attribute">商品精美，用着舒心</div>
-      <div class="sale-tast">精装手机</div>
-      <div class="sale-price">8900</div>
-      <div class="sale-count">2</div>
-      <div class="sale-sum">17800.00</div>
+      <div class="sale-price">{{ buysale.skuPrice }}</div>
+      <div class="sale-count">{{ buysale.skuNum }}</div>
+      <div class="sale-sum">{{ buysale.skuPrice * buysale.skuNum }}</div>
     </div>
     <div class="exprese">
       <div class="exprese-1">运送方式：</div>
@@ -94,7 +88,9 @@
     </div>
     <div class="buypeice">
       <div class="buypeice-weight">总重量：260</div>
-      <div class="buypeice-price">实付款：<span>$17800</span></div>
+      <div class="buypeice-price">
+        实付款：<span>${{ total }}</span>
+      </div>
       <div class="buypeice-adress">寄至M78星云</div>
       <div class="buypeice-person">收货人：史帅乐</div>
     </div>
@@ -111,8 +107,57 @@
 </template>
 
 <script>
+import { reqGetBanners } from "../../api/detail";
 export default {
   name: "PayDetail",
+  data() {
+    return {
+      buylist: [],
+      total: 17890,
+      dialogFormVisible: false,
+      form: {
+        name: "",
+        reques: "",
+        delivery: false,
+        type: [],
+        resource: "",
+        desc: "",
+        address: "",
+      },
+      formLabelWidth: "120px",
+    };
+  },
+  methods: {
+    changaddress() {
+      this.dialogFormVisible = true;
+    },
+    upDateAddress() {
+      const { name, reques, address } = this.form;
+      this.dialogFormVisible = false;
+      const newaddress = {
+        name,
+        reques,
+        address,
+      };
+      this.buylist.data.push(newaddress);
+    },
+    del(index) {
+      this.buylist.data.splice(index, 1);
+    },
+  },
+  watch: {
+    buylist() {
+      const { sale } = this.buylist;
+      const res = sale.reduce((p, c) => {
+        return c.skuNum * c.skuPrice + p;
+      }, 0);
+      this.total = res;
+    },
+  },
+  async mounted() {
+    const res = await reqGetBanners();
+    this.buylist = res;
+  },
 };
 </script>
 
@@ -287,10 +332,10 @@ export default {
   text-align: right;
   font-size: 12px;
 }
-button {
+.btn {
   position: absolute;
   right: 60px;
-  top: 880px;
+  top: 900px;
   width: 182px;
   height: 39px;
   vertical-align: middle;
@@ -305,5 +350,16 @@ button {
 }
 .footer {
   margin-top: 250px;
+}
+.del {
+  display: inline-block;
+  color: #fff;
+  background-color: #395aee;
+  width: 50px;
+  text-align: center;
+  border-radius: 10px;
+}
+.left-del {
+  margin-right: 58px;
 }
 </style>

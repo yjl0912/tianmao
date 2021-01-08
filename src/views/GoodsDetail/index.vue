@@ -11,45 +11,42 @@
       <div class="goodsimage">
         <div>
           <div class="smallimage">
-            <img src="../../../public/image/yanyuqing.jpg" alt="" ref="event" />
+            <img
+              :src="
+                skuInfo.skuImageList && skuInfo.skuImageList[current]
+                  ? skuInfo.skuImageList[current].imgUrl
+                  : '../../../public/image/yanyuqing.jpg'
+              "
+              alt=""
+              ref="event"
+            />
           </div>
         </div>
 
         <div class="event" @mousemove="handleMove"></div>
         <div class="mask" ref="mask"></div>
         <div class="bigimage">
-          <img src="../../../public/image/yanyuqing.jpg" alt="" ref="bigImg" />
+          <img
+            :src="
+              skuInfo.skuImageList && skuInfo.skuImageList[current]
+                ? skuInfo.skuImageList[current].imgUrl
+                : '../../../public/image/yanyuqing.jpg'
+            "
+            alt=""
+            ref="bigImg"
+          />
         </div>
 
         <!-- 图片轮播 -->
-        <div class="swiper-container">
+        <div class="swiper-container" ref="swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/yanyuqing.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/yanyuqing.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/yanyuqing.jpg" alt="" />
-            </div>
-            <div class="swiper-slide">
-              <img src="../../../public/image/mitaohong.jpg" alt="" />
+            <div
+              class="swiper-slide"
+              v-for="(skuImage, index) in skuInfo.skuImageList"
+              :key="skuImage.id"
+              @click="upcurrent(index)"
+            >
+              <img :src="skuImage.imgUrl" alt="" />
             </div>
           </div>
           <div class="swiper-button-next"></div>
@@ -74,45 +71,32 @@
           <div class="phonesale-comment">累计评价<span>1867</span></div>
           <div class="phonesale-mark">送天猫积分<span>162</span></div>
         </div>
-        <div class="network">
-          <div class="network-type">网络类型</div>
-          <div class="netType">
-            <div class="netType-1 active">5G网通</div>
-            <div class="netType-2">5G移动</div>
-            <div class="netType-3">5G电信</div>
-          </div>
-        </div>
-        <div class="network">
-          <div class="network-type">套餐类型</div>
-          <div class="netType">
-            <div class="netType-1">官方标配</div>
-            <div class="netType-2">高配</div>
-            <div class="netType-3 active">低配</div>
-          </div>
-        </div>
-        <div class="network">
-          <div class="network-type">存储容量</div>
-          <div class="netType">
-            <div class="netType-1">4+64GB</div>
-            <div class="netType-2 active">4+128GB</div>
-            <div class="netType-3">6+128GB</div>
-            <div class="netType-4">8+128GB</div>
-          </div>
-        </div>
-        <div class="network">
-          <div class="network-type">机身颜色</div>
-          <div class="netType">
-            <div class="netType-1">苏音蓝</div>
-            <div class="netType-2 active">幻夜黑</div>
-            <div class="netType-3">烟雨青</div>
+        <div
+          class="network"
+          v-for="spuSale in spuSaleAttrList"
+          :key="spuSale.id"
+        >
+          <div class="network-type">{{ spuSale.saleAttrName }}</div>
+          <div
+            class="netType"
+            v-for="spusale in spuSale.spuSaleAttrValueList"
+            :key="spusale.id"
+          >
+            <div
+              class="netType-1"
+              :class="spusale.isChecked === '1' ? 'active' : ''"
+              @click="changeColor(spusale, spuSale.spuSaleAttrValueList)"
+            >
+              {{ spusale.saleAttrValueName }}
+            </div>
           </div>
         </div>
         <div class="buy">
           <div class="buy-count">数量</div>
-          <input type="text" value="1" />
+          <input type="text" :value="num" />
           <div class="buy-change">
-            <div class="buy-plus">↑</div>
-            <div class="buy-decrease">↓</div>
+            <div class="buy-plus" @click="plus">↑</div>
+            <div class="buy-decrease" @click="decrease">↓</div>
           </div>
           <div class="buy-save">库存70件</div>
         </div>
@@ -139,29 +123,29 @@
 <script>
 import Swiper, { Navigation } from "swiper";
 Swiper.use(Navigation);
-
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "GoodsDetail",
   data() {
     return {
-      isShow: false,
+      num: 1,
+      current: 0,
     };
   },
   methods: {
-    mySwiper() {
-      new Swiper(".swiper-container", {
-        slidesPerView: 3, // 每页显示轮播图的数量
-        spaceBetween: 20, // 轮播图间距
-        slidesPerGroup: 5,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+    ...mapActions(["getProductDetail"]),
+    decrease() {
+      if (this.num < 1) {
+        this.num = 1;
+      }
+      this.num--;
+    },
+    plus() {
+      if (this.num > 70) return;
+      this.num++;
     },
     handleMove() {
       /*  开关*/
-      this.isShow = true;
       /* event是小图大小 */
       this.maskwidth = this.$refs.event.clientWidth / 2;
       /*   console.log(this.maskwidth); */
@@ -191,9 +175,37 @@ export default {
       bigImg.style.left = -2 * left + "px";
       bigImg.style.top = -2 * top + "px";
     },
+    upcurrent(index) {
+      this.current = index;
+    },
+    changeColor(spusale, spuSaleAttrValueList) {
+      if (spusale.isChecked === "1") return;
+      spuSaleAttrValueList.forEach(
+        (spuSaleAttr) => (spuSaleAttr.isChecked = "0")
+      );
+      spusale.isChecked = "1";
+    },
+  },
+  computed: {
+    ...mapGetters(["categoryView", "spuSaleAttrList", "skuInfo"]),
+  },
+  watch: {
+    skuInfo() {
+      this.$nextTick(() => {
+        new Swiper(this.$refs.swiper, {
+          slidesPerView: 3, // 每页显示轮播图的数量
+          spaceBetween: 30, // 轮播图间距
+          slidesPerGroup: 3, // 切换时切换轮播图的数量
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+      });
+    },
   },
   mounted() {
-    this.mySwiper();
+    this.getProductDetail(123);
   },
 };
 </script>
@@ -288,7 +300,9 @@ export default {
   top: 0px;
   display: none;
 }
-
+.swiper-slide {
+  width: 123px;
+}
 .swiper-slide img {
   width: 60px;
   height: 60px;
@@ -388,6 +402,7 @@ export default {
   margin-top: 20px;
   font-size: 12px;
   width: 66px;
+  flex-shrink: 0;
 }
 .netType {
   display: flex;
@@ -403,7 +418,7 @@ export default {
   line-height: 28px;
   height: 28px;
   font-size: 12px;
-  margin: 10px 30px 10px 10px;
+  margin: 10px 20px 10px 10px;
   width: 60px;
 }
 .active {

@@ -1,0 +1,59 @@
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":16988,
+            "address":"m78星云",
+            "name":"史帅乐收",
+            "reques":"送不到打死"
+        },
+        {
+            "id":16987,
+            "address":"五星阳光会所",
+            "name":"骚亮收",
+            "reques":"各领风骚数百年"
+        },
+        {
+            "id":16985,
+            "address":"职业干饭人",
+            "name":"怀泳收",
+            "reques":"来我怀里游泳"
+        }
+    ],
+    "sale":[
+        { 
+      "id":1,
+     "cartPrice":4500,
+     "imgUrl":"http://182.92.128.115:8080/group1/M00/00/0D/rBFUDF7G99WAOrc1AAM-okB39eQ738.png",
+     "isChecked":1,
+     "skuPrice":1800,
+     "skuNum":3,
+     "skuName":" IphoneXR--33",
+     "skuId":113,
+     "dsc":"包装精美，不买打死"
+      },
+      {
+        "cartPrice":3500,
+        "imgUrl":"http://182.92.128.115:8080/group1/M00/00/0F/rBFUDF7JsSCAQY55AAM4uhmZIG8446.png",
+        "isChecked":1,
+        "skuPrice":1700,
+        "skuNum":1,
+        "skuName":" 荣耀V50 Pro-22",
+        "skuId":115,
+        "id":3,
+        "dsc":"用心打造良心品牌"
+    },
+    {
+        "id":2,
+       "cartPrice":5500,
+       "imgUrl":"http://182.92.128.115:8080/group1/M00/00/0F/rBFUDF7JsSCAQY55AAM4uhmZIG8446.png",
+       "isChecked":1,
+       "skuPrice":1900,
+       "skuNum":2,
+       "skuName":" 荣耀V30 Pro-22",
+       "skuId":114,
+       "dsc":"我求你别买"
+           }
+     ]
+}
