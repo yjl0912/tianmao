@@ -10,7 +10,15 @@
     </div>
     <div class="address-more">
       <div class="adress" v-for="(buy, index) in buylist.data" :key="buy.id">
-        <div class="adress-option">选择收货地址</div>
+        <div class="adress-option">
+          选择收货地址
+          <span
+            class="option"
+            :class="buy.isChecked ? 'option-active' : ''"
+            @click="changeActive(buy, buylist.data)"
+            >设为默认</span
+          >
+        </div>
         <div class="adress-card">
           <div class="address-person">
             <!-- <span>火星</span> -->
@@ -143,6 +151,11 @@ export default {
     },
     del(index) {
       this.buylist.data.splice(index, 1);
+    },
+    changeActive(buy, data) {
+      if (buy.isChecked === 1) return;
+      data.forEach((spuSaleAttr) => (spuSaleAttr.isChecked = 0));
+      buy.isChecked = 1;
     },
   },
   watch: {
@@ -361,5 +374,14 @@ export default {
 }
 .left-del {
   margin-right: 58px;
+}
+.option {
+  margin-left: 20px;
+  display: inline-block;
+  width: 80px;
+}
+.option-active {
+  background-color: #ff0036;
+  color: #fff;
 }
 </style>
