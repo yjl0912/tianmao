@@ -6,19 +6,22 @@
             "id":16988,
             "address":"m78星云",
             "name":"史帅乐收",
-            "reques":"送不到打死"
+            "reques":"送不到打死",
+            "isChecked":0
         },
         {
             "id":16987,
             "address":"五星阳光会所",
             "name":"骚亮收",
-            "reques":"各领风骚数百年"
+            "reques":"各领风骚数百年",
+            "isChecked":0
         },
         {
             "id":16985,
             "address":"职业干饭人",
             "name":"怀泳收",
-            "reques":"来我怀里游泳"
+            "reques":"来我怀里游泳",
+            "isChecked":0
         }
     ],
     "sale":[
