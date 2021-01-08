@@ -1,16 +1,12 @@
 
-
-
-
 <template>
   <div id="app">
-     <router-view></router-view>
-  </div> 
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 export default {
-    
   name: "App",
   mounted() {
     this.$router.push({
@@ -19,11 +15,17 @@ export default {
   },
 }
 </script>
-
-<style>
-    body {
+<style scoped>
+body {
   margin: 0;
   padding: 0;
-   background-color: #f5f5f5;
- }
+  background-color: #f5f5f5;
+}
 </style>
+
+
+
+
+
+
+

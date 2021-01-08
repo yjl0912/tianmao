@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="headerLeft">
-        喵, 欢迎来到天猫 <a href="javascript:;" @click="tologin">请登录</a> <a href="">免费注册</a>
+        喵, 欢迎来到天猫 <a href="javascript:;" @click="tologin">请登录</a> <a href="javascript:;" @click="toRegister">免费注册</a>
       </div>
       <div class="headerRight">
         <a href="#" class="item" data-id='1' @mouseenter="mouseenter" @mouseleave='mouseleave'>我的淘宝</a>
@@ -37,6 +37,11 @@ export default {
     }
   },
   methods:{
+    toRegister(){
+        this.$router.push({
+          path:'/Registered'
+        })
+    },
     mouseenter(e){
     //  console.log(e.target.dataset.id)
     this.showid = e.target.dataset.id
