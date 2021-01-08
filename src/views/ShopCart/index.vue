@@ -78,7 +78,9 @@
               >已选商品&nbsp;&nbsp;{{ total }}&nbsp;&nbsp;件（不包含运费）</span
             >
             <span class="pice">￥{{ totalPrice }}</span>
-            <span class="settlement">结算</span>
+            <span class="settlement" style="background-color: #ea4a36"
+              >结算</span
+            >
           </div>
         </div>
         <div class="cart-main">
@@ -86,7 +88,7 @@
           <div class="cart-table-th">
             <div class="wp">
               <div class="th-chk">
-                <input type="checkbox" />
+                <input type="checkbox" :checked="selectAll" />
                 <div class="select-all">全选</div>
                 <div class="td-inner">商品信息</div>
                 <div class="ko"></div>
@@ -101,12 +103,11 @@
           <div class="all">
             <div
               class="order-all"
-              v-for="shopCart in shopCartList"
+              v-for="(shopCart, index) in shopCartList"
               :key="shopCart.id"
             >
               <div class="order-list">
                 <div class="shop-info">
-                  <input type="checkbox" />
                   <div class="makepoint">
                     <img src="" alt="" />
                   </div>
@@ -178,7 +179,7 @@
                             <div class="bu-a">
                               <a href="##">移入收藏夹</a>
                               <div>
-                                <a href="##">删除</a>
+                                <a href="##" @click="deletecart(index)">删除</a>
                               </div>
                               <a href="##">相似宝贝</a>
                             </div>
@@ -263,16 +264,16 @@
             <div class="float-wrapper">
               <div class="selects-all">
                 <div class="cart-checkbox">
-                  <input type="checkbox" />
+                  <input type="checkbox" :checked="selectAll" />
                 </div>
                 &nbsp;全选
               </div>
-              <div class="operations">
-                <span class="delete-selected">删除</span>
+              <!-- <div class="operations">
+                <span class="delete-selected" >删除</span>
                 <span class="clear-invalid">清除失效宝贝</span>
                 <span classi="batch-fav">移入收藏夹</span>
                 <span class="batch-share">分享</span>
-              </div>
+              </div> -->
               <div class="float-right">
                 <div class="amount-num">
                   <span>已选商品</span>
@@ -286,7 +287,9 @@
                   </div>
                 </div>
                 <div class="btn-area">
-                  <span class="settlement">结&nbsp;&nbsp;算</span>
+                  <span class="settlement" style="background-color: #ea4a36"
+                    >结&nbsp;&nbsp;算</span
+                  >
                 </div>
               </div>
             </div>
@@ -306,13 +309,19 @@ export default {
   data() {
     return {
       num: 1,
-      shopCartList: [],
+      shopCartList: [], //购物车商品数组
     };
   },
   // 监视
   watch: {},
   // 计算属性
   computed: {
+    // 全选
+    selectAll() {
+      return this.shopCartList.every((cart) => {
+        return cart.isChecked === 1;
+      });
+    },
     // 商品总量
     total() {
       return (
@@ -330,6 +339,12 @@ export default {
     },
   },
   methods: {
+    // 删除商品
+    deletecart(index) {
+      this.shopCartList.splice(index, 1);
+    },
+
+    // 减少商品数量
     reduce(id) {
       this.shopCartList.map((cart) => {
         if (cart.id === id) {
@@ -341,6 +356,7 @@ export default {
         }
       });
     },
+    // 增加商品数量
     plus(id) {
       this.shopCartList.map((cart) => {
         if (cart.id === id) {
@@ -364,7 +380,6 @@ export default {
           cart.isChecked = 0;
         }
       });
-    
     },
     // ...mapActions(["getCartList"]),
     // 格式化数据 手动输入数量
@@ -382,25 +397,12 @@ export default {
       // 更新输入的值
       e.target.value = skuNum;
     },
+    // 结算
+    // submit(){
+    //   this.$router.push('')
+    // },
   },
-  // 增加 减少 数量
-  //   updateCount(skuId, skuNum, count) {
-  //     // 判断 如果商品数量小于等于1  减少
-  //     if (count <= 1 && skuNum === -1) {
-  //       if (window.confirm("您是否是要删除当前商品?")) {
-  //         // 是就删除
-  //       }
-  //       // 不是就return
-  //       return;
-  //     }
-  //     // 判断 如果商品大于等于10
-  //     if (count >= 10 && skuNum === 1) {
-  //       alert("超出库存了");
-  //       return;
-  //     }
-  //     this.update();
-  //   },
-  // },
+
   // 生命周期
   async mounted() {
     const result = await reqGetCartList();

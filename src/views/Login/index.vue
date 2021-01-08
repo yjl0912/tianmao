@@ -23,7 +23,7 @@
           <div class="content">
             <form action="##" @submit.prevent="submit">
               <ValidationProvider
-                rules="required|length|phone "
+                rules="required|length|phone"
                 v-slot="{ errors }"
               >
                 <div class="input-text clearFix">
@@ -39,16 +39,19 @@
                 <p :style="{ color: 'red' }">{{ errors[0] }}</p>
               </ValidationProvider>
 
-              <div class="input-text clearFix">
-                <div class="portrait">
-                  <span class="iconfont icon-suo1"></span>
+              <ValidationProvider rules="required|lengths" v-slot="{ errors }">
+                <div class="input-text clearFix">
+                  <div class="portrait">
+                    <span class="iconfont icon-suo1"></span>
+                  </div>
+                  <input
+                    type="password"
+                    placeholder="请输入密码"
+                    v-model="user.password"
+                  />
                 </div>
-                <input
-                  type="password"
-                  placeholder="请输入密码"
-                  v-model="user.password"
-                />
-              </div>
+                <p :style="{ color: 'red' }">{{ errors[0] }}</p>
+              </ValidationProvider>
               <button class="btn">登录</button>
               <div class="setting clearFix">
                 <a href="##">忘记密码</a>
@@ -81,13 +84,20 @@
 <script>
 import { ValidationProvider, extend } from "vee-validate";
 import { required } from "vee-validate/dist/rules";
-extend("required", { ...required, message: "手机号必须要填写" });
+extend("required", { ...required, message: "此项必须填写" });
 extend("length", {
   validate(value) {
     // 验证手机号是否是11位数
     return value.length === 11;
   },
   message: "必须输入11位的手机号",
+});
+extend("lengths", {
+  validate(value) {
+    // 验证手机号是否是11位数
+    return value.length === 6;
+  },
+  message: "必须输入6位的密码",
 });
 extend("phone", {
   validate(value) {
